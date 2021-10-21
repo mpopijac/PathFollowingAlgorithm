@@ -1,6 +1,8 @@
 package hr.mpopijac;
 
+import hr.mpopijac.data.ResultData;
 import hr.mpopijac.exceptions.ReadFromFileException;
+import hr.mpopijac.services.PathFollowingAlgorithmService;
 import hr.mpopijac.util.FileUtil;
 
 import java.util.Arrays;
@@ -17,8 +19,10 @@ public class Main {
             LOG.info(() -> "Input file path:" + args[0]);
             try {
                 List<String> fileLines = FileUtil.readFromFile(args[0]);
-                logContentOfDocument(fileLines);
-
+                printContentOfDocument(fileLines);
+                PathFollowingAlgorithmService service = new PathFollowingAlgorithmService();
+                ResultData result = service.findPath(fileLines);
+                printSolution(result);
             } catch (Exception e) {
                 LOG.info("ERROR Message: " + e.getMessage());
                 LOG.info("ERROR StackTrace: " + Arrays.toString(e.getStackTrace()));
@@ -29,7 +33,7 @@ public class Main {
         LOG.info("Application STOP");
     }
 
-    private static void logContentOfDocument(List<String> fileLines) {
+    private static void printContentOfDocument(List<String> fileLines) {
         StringBuilder sb = new StringBuilder();
         sb.append(System.lineSeparator());
         sb.append("Content of document:");
@@ -38,7 +42,15 @@ public class Main {
             sb.append(s);
             sb.append(System.lineSeparator());
         }
-        LOG.info(sb.toString());
+        String content = sb.toString();
+        LOG.info(content);
+    }
+
+    private static void printSolution(ResultData result) {
+        String solutionResult = System.lineSeparator() +
+                "Letters: " + result.getLetters() + System.lineSeparator() +
+                "Path as characters: " + result.getPath();
+        LOG.info(solutionResult);
     }
 
 }

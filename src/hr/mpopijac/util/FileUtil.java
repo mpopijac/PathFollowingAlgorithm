@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class FileUtil {
+public final class FileUtil {
 
     private FileUtil() {
     }
