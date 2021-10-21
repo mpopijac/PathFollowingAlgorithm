@@ -95,7 +95,7 @@ public class PathFollowingAlgorithmService {
                 || ALLOWED_NOT_LETTER_CHARACTERS.contains(String.valueOf(letter));
     }
 
-    public CursorData fillUpInitialCursorData(List<String> fileLines) throws NoStartingCharacterException, MultipleStartingCharacterException, MultipleEndingCharacterException, NotAllowedCharacterException {
+    private CursorData fillUpInitialCursorData(List<String> fileLines) throws NoStartingCharacterException, MultipleStartingCharacterException, MultipleEndingCharacterException, NotAllowedCharacterException {
         final char[][] charMap = new char[fileLines.size()][AlgorithmHelper.maxLineLength(fileLines)];
         final CursorData cursor = new CursorData();
         int numberOfEndChars = 0;

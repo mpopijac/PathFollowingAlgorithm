@@ -32,7 +32,7 @@ public class Main {
     }
 
     private static void printContentOfDocument(List<String> fileLines) {
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         sb.append(System.lineSeparator());
         sb.append("Content of document:");
         sb.append(System.lineSeparator());
@@ -40,12 +40,12 @@ public class Main {
             sb.append(s);
             sb.append(System.lineSeparator());
         }
-        String content = sb.toString();
+        final String content = sb.toString();
         LOG.info(content);
     }
 
     private static void printSolution(ResultData result) {
-        String solutionResult = System.lineSeparator() +
+        final String solutionResult = System.lineSeparator() +
                 "Letters: " + result.getLetters() + System.lineSeparator() +
                 "Path as characters: " + result.getPath();
         LOG.info(solutionResult);
